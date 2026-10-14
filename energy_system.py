@@ -77,8 +77,8 @@ def main(rates, spike_limit, meters_local):
     h = record_reading("M-03", -50)
     print("Readings stored so far:", len(h))
     rates = raise_rates(10, rates)
-    print(f"Bill M-01: {compute_bill("M-01", rates)}.2f")
-    print(f"Bill M-03: {compute_bill("M-03", rates)}.2f")
+    print(f"Bill M-01: {compute_bill("M-01", rates):.2f}")
+    print(f"Bill M-03: {compute_bill("M-03", rates):.2f}")
     print("Spikes:", flag_spikes(meters, spike_limit))
     adjustment = (
         int(
@@ -89,7 +89,7 @@ def main(rates, spike_limit, meters_local):
     record_reading("M-01", adjustment, h)
     save_meter_data(meters_local)
     meters_local = load_meter_data()
-    print(f"Bill M-01 after reload: {compute_bill("M-01", rates)}.2f")
+    print(f"Bill M-01 after reload: {compute_bill("M-01", rates):.2f}")
 
 
 main([RATE_TIER_1, RATE_TIER_2, RATE_TIER_3], SPIKE_LIMIT, meters)
